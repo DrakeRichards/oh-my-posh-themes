@@ -81,7 +81,9 @@
         },
         {
           "foreground": "p:normal",
-          "style": "plain",
+          "background": "p:tone-dark",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
           "template": " $",
           "type": "text"
         }
