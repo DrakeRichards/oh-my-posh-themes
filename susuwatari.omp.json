@@ -48,7 +48,7 @@
           "style": "diamond",
           "leading_diamond": " \ue0b6",
           "trailing_diamond": "\ue0b4",
-          "template": " {{ if ne .Env.POSH_SESSION_DEFAULT_USER .UserName }}{{ .UserName }}@{{ end }}{{ .HostName }}",
+          "template": " {{ if ne .Env.POSH_SESSION_DEFAULT_USER .UserName }}{{ .UserName }}@{{ end }}{{ .HostName }} ",
           "type": "session"
         },
         {
