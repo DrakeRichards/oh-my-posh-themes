@@ -80,7 +80,7 @@
           "template": " {{ if gt .Code 0 }}<p:error>\uf00d {{ .Meaning }}</>{{ else }}<p:success>\uf42e</>{{ end }} "
         },
         {
-          "foreground": "#7a7a7a",
+          "foreground": "p:normal",
           "style": "plain",
           "template": " $",
           "type": "text"
