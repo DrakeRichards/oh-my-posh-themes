@@ -77,7 +77,7 @@
           "trailing_diamond": "\ue0b4",
           "foreground": "p:normal",
           "background": "p:tone-dark",
-          "template": " {{ if gt .Code 0 }}<p:error>\uf00d {{ .Meaning }}</>{{ else }}<p:success>\uf42e</>{{ end }} "
+          "template": " {{ if gt .Code 0 }}<p:error>\uf00d{{ .Meaning }}</>{{ else }}<p:success>\uf42e</>{{ end }} "
         },
         {
           "foreground": "p:normal",
