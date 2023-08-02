@@ -72,7 +72,7 @@
           }
         },
         {
-          "type": "exit",
+          "type": "status",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
           "foreground": "p:normal",
@@ -124,7 +124,9 @@
         },
         {
           "type": "node",
-          "style": "powerline",
+          "style": "diamond",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
           "foreground": "p:success",
           "background": "p:tone-dark",
           "template": " {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
