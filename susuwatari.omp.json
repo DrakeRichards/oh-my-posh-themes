@@ -120,6 +120,9 @@
   "transient_prompt": {
     "foreground": "p:success",
     "background": "transparent",
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}p:error{{ end}}"
+    ],
     "template": " ❯ "
   },
   "palette": {
