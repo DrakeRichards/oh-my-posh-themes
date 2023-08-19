@@ -9,6 +9,42 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "git",
+          "style": "diamond",
+          "foreground": "p:normal",
+          "background": "p:tone-dark",
+          "foreground_templates": [
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:warning{{ end }}",
+            "{{ if gt .Ahead 0 }}p:success{{ end }}",
+            "{{ if gt .Behind 0 }}p:info{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tone-light{{ end }}"
+          ],
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "templates": [
+            " [{{ .HEAD }}] ",
+            "{{if .BranchStatus }}[{{ .BranchStatus }}] {{ end }}",
+            "{{ if .Working.Changed }}[\uf044 : {{ .Working.String }}] {{ end }}",
+            "{{ if and (.Staging.Changed) (.Working.Changed) }}| {{ end }}",
+            "{{ if .Staging.Changed }}[\uf046 : {{ .Staging.String }}] {{ end }}"
+          ],
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
           "background": "p:tone-light",
           "foreground": "p:info",
           "leading_diamond": "\ue0b6",
@@ -88,58 +124,10 @@
           "type": "text"
         }
       ]
-    },
-    {
-      "type": "rprompt",
-      "alignment": "right",
-      "segments": [
-        {
-          "type": "git",
-          "style": "diamond",
-          "foreground": "p:normal",
-          "background": "p:tone-dark",
-          "foreground_templates": [
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:warning{{ end }}",
-            "{{ if gt .Ahead 0 }}p:success{{ end }}",
-            "{{ if gt .Behind 0 }}p:info{{ end }}"
-          ],
-          "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tone-light{{ end }}"
-          ],
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "templates": [
-            " [{{ .HEAD }}] ",
-            "{{if .BranchStatus }}[{{ .BranchStatus }}] {{ end }}",
-            "{{ if .Working.Changed }}[\uf044 : {{ .Working.String }}] {{ end }}",
-            "{{ if and (.Staging.Changed) (.Working.Changed) }}| {{ end }}",
-            "{{ if .Staging.Changed }}[\uf046 : {{ .Staging.String }}] {{ end }}"
-          ],
-          "properties": {
-            "branch_max_length": 25,
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          }
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#63F08C",
-          "template": "  "
-        }
-      ],
-      "newline": true
     }
   ],
   "transient_prompt": {
-    "foreground": "#7a7a7a",
+    "foreground": "p:callout",
     "background": "transparent",
     "template": " ❯ "
   },
