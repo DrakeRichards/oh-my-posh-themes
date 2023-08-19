@@ -118,10 +118,9 @@
     }
   ],
   "transient_prompt": {
-    "foreground": "p:tone-light",
+    "foreground": "p:success",
     "background": "transparent",
-    "template": " ❯ ",
-    "filler": "-"
+    "template": " ❯ "
   },
   "palette": {
     "tone-dark-darker": "#0f0e0d",
