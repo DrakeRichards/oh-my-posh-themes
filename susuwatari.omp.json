@@ -123,7 +123,7 @@
     "foreground_templates": [
       "{{ if gt .Code 0 }}p:error{{ end}}"
     ],
-    "template": " ❯ "
+    "template": "\n ❯ "
   },
   "palette": {
     "tone-dark-darker": "#0f0e0d",
