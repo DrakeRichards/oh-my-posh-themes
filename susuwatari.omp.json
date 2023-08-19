@@ -118,11 +118,8 @@
     }
   ],
   "transient_prompt": {
-    "foreground": "p:success",
+    "foreground": "p:tone-light",
     "background": "transparent",
-    "foreground_templates": [
-      "{{ if gt .Code 0 }}p:error{{ end}}"
-    ],
     "template": "\n ❯ "
   },
   "palette": {
