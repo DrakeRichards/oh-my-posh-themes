@@ -77,7 +77,7 @@
           "trailing_diamond": "\ue0b4",
           "foreground": "p:normal",
           "background": "p:tone-dark",
-          "template": " {{ if gt .Code 0 }}<p:error>\uf00d{{ .Meaning }}</>{{ else }}<p:success>\uf42e</>{{ end }} "
+          "template": " {{ if gt .Code 0 }}<p:error>\uf00d {{ .Meaning }}</>{{ else }}<p:success>\uf42e</>{{ end }}"
         },
         {
           "foreground": "p:normal",
@@ -120,35 +120,6 @@
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true
-          }
-        },
-        {
-          "type": "node",
-          "style": "diamond",
-          "leading_diamond": " \ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "p:success",
-          "background": "p:tone-dark",
-          "template": " {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
-          "properties": {
-            "display_mode": "files",
-            "fetch_package_manager": true,
-            "fetch_version": true,
-            "npm_icon": "\ue71e npm ",
-            "yarn_icon": "\uf487 yarn "
-          }
-        },
-        {
-          "type": "python",
-          "style": "diamond",
-          "leading_diamond": " \ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "p:info",
-          "background": "p:tone-dark",
-          "template": " \ue606 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
-          "properties": {
-            "display_mode": "context",
-            "fetch_virtual_env": false
           }
         }
       ]
