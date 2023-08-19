@@ -7,41 +7,6 @@
     {
       "type": "prompt",
       "alignment": "left",
-      "segments": [
-        {
-          "type": "git",
-          "style": "diamond",
-          "foreground": "p:normal",
-          "background": "p:tone-dark",
-          "foreground_templates": [
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:warning{{ end }}",
-            "{{ if gt .Ahead 0 }}p:success{{ end }}",
-            "{{ if gt .Behind 0 }}p:info{{ end }}"
-          ],
-          "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tone-light{{ end }}"
-          ],
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "templates": [
-            " [{{ .HEAD }}] ",
-            "{{if .BranchStatus }}[{{ .BranchStatus }}] {{ end }}",
-            "{{ if .Working.Changed }}[\uf044 : {{ .Working.String }}] {{ end }}",
-            "{{ if and (.Staging.Changed) (.Working.Changed) }}| {{ end }}",
-            "{{ if .Staging.Changed }}[\uf046 : {{ .Staging.String }}] {{ end }}"
-          ],
-          "properties": {
-            "branch_max_length": 25,
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          }
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
       "newline": true,
       "segments": [
         {
@@ -77,15 +42,6 @@
           "style": "diamond",
           "template": " <parentForeground>{{ .Shell }}</>",
           "trailing_diamond": "\ue0b4"
-        },
-        {
-          "background": "p:tone-light",
-          "foreground": "p:success",
-          "style": "diamond",
-          "leading_diamond": " \ue0b6",
-          "trailing_diamond": "\ue0b4",
-          "template": " {{ if ne .Env.POSH_SESSION_DEFAULT_USER .UserName }}{{ .UserName }}@{{ end }}{{ .HostName }} ",
-          "type": "session"
         },
         {
           "background": "p:tone-dark",
@@ -124,12 +80,48 @@
           "type": "text"
         }
       ]
+    },
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "git",
+          "style": "diamond",
+          "foreground": "p:normal",
+          "background": "p:tone-dark",
+          "foreground_templates": [
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:warning{{ end }}",
+            "{{ if gt .Ahead 0 }}p:success{{ end }}",
+            "{{ if gt .Behind 0 }}p:info{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tone-light{{ end }}"
+          ],
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "templates": [
+            " [{{ .HEAD }}] ",
+            "{{if .BranchStatus }}[{{ .BranchStatus }}] {{ end }}",
+            "{{ if .Working.Changed }}[\uf044 : {{ .Working.String }}] {{ end }}",
+            "{{ if and (.Staging.Changed) (.Working.Changed) }}| {{ end }}",
+            "{{ if .Staging.Changed }}[\uf046 : {{ .Staging.String }}] {{ end }}"
+          ],
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        }
+      ]
     }
   ],
   "transient_prompt": {
-    "foreground": "p:callout",
+    "foreground": "p:tone-light",
     "background": "transparent",
-    "template": " ❯ "
+    "template": " ❯ ",
+    "filler": "-"
   },
   "palette": {
     "tone-dark-darker": "#0f0e0d",
