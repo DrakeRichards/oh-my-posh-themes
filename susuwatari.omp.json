@@ -52,6 +52,15 @@
           "type": "root"
         },
         {
+          "type": "session",
+          "style": "diamond",
+          "background": "p:tone-light",
+          "foreground": "p:success",
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }} {{ end }}"
+        },
+        {
           "type": "path",
           "style": "diamond",
           "foreground": "p:normal",
