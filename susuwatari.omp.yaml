@@ -1,0 +1,129 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version: 2
+final_space: true
+console_title_template: "{{ .Shell }} in {{ .Folder }}"
+blocks:
+  - type: prompt
+    alignment: left
+    newline: true
+    segments:
+      # OS
+      - background: p:tone-light
+        foreground: p:info
+        leading_diamond: ""
+        trailing_diamond: ""
+        properties:
+          alpine: ""
+          arch: ""
+          centos: ""
+          debian: ""
+          elementary: ""
+          fedora: ""
+          gentoo: ""
+          linux: ""
+          macos: ""
+          manjaro: ""
+          mint: ""
+          opensuse: ""
+          raspbian: ""
+          ubuntu: ""
+          windows: ""
+        style: diamond
+        template: " {{ if .WSL }} on {{ end }}{{ .Icon }} "
+        type: os
+      # Shell
+      - background: p:tone-dark
+        foreground: p:normal
+        type: shell
+        style: diamond
+        template: " <parentForeground>{{ .Shell }}</>"
+        trailing_diamond: ""
+      # Root
+      - background: p:tone-dark
+        foreground: p:error
+        style: diamond
+        trailing_diamond: ""
+        template: " "
+        type: root
+      # SSH session
+      - type: session
+        style: diamond
+        background: p:tone-light
+        foreground: p:success
+        leading_diamond: " "
+        trailing_diamond: ""
+        template: "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }} {{ end }}"
+      # Python
+      - type: python
+        style: diamond
+        foreground: p:success
+        background: p:tone-light
+        leading_diamond: " "
+        trailing_diamond: ""
+        template: " {{ if .Error }}{{ .Error }}{{ else }} {{ if .Venv }}(v){{ end }}{{ .Major }}.{{ .Minor }}{{ end }} "
+      # Git
+      - type: git
+        style: diamond
+        foreground: p:normal
+        background: p:tone-dark
+        foreground_templates:
+          - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:warning{{ end }}"
+          - "{{ if gt .Ahead 0 }}p:success{{ end }}"
+          - "{{ if gt .Behind 0 }}p:info{{ end }}"
+        background_templates:
+          - "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tone-light{{ end }}"
+        leading_diamond: " "
+        trailing_diamond: ""
+        templates:
+          - " [{{ .HEAD }}] "
+          - "{{if .BranchStatus }}[{{ .BranchStatus }}] {{ end }}"
+          - "{{ if .Working.Changed }}[ : {{ .Working.String }}] {{ end }}"
+          - "{{ if and (.Staging.Changed) (.Working.Changed) }}| {{ end }}"
+          - "{{ if .Staging.Changed }}[ : {{ .Staging.String }}] {{ end }}"
+        properties:
+          branch_max_length: 25
+          fetch_stash_count: true
+          fetch_status: true
+          fetch_upstream_icon: true
+      # Path
+      - type: path
+        style: diamond
+        foreground: p:normal
+        background: p:tone-light
+        leading_diamond: " "
+        trailing_diamond: ""
+        template: " {{ .Path }} "
+        properties:
+          style: agnoster_short
+      # Previous command status
+      - type: status
+        style: diamond
+        trailing_diamond: ""
+        foreground: p:normal
+        background: p:tone-dark
+        template:
+          " {{ if gt .Code 0 }}<p:error> {{ .Meaning }}</>{{ else }}<p:success></>{{
+          end }}"
+      # Prompt character
+      - foreground: p:normal
+        background: p:tone-dark
+        style: diamond
+        trailing_diamond: ""
+        template: " $"
+        type: text
+transient_prompt:
+  foreground: p:normal
+  background: transparent
+  template: "\n ❯ "
+palette:
+  tone-dark-darker: "#0f0e0d"
+  tone-dark: "#2c2b2a"
+  info: "#309fd9"
+  tone-light: "#474341"
+  tone-light-dark: "#2d2927"
+  success: "#74cf16"
+  error: "#c53923"
+  warning: "#ff5300"
+  callout: "#c099ff"
+  normal: "#f0dea6"
