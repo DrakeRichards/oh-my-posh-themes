@@ -30,7 +30,7 @@ blocks:
           ubuntu: ""
           windows: ""
         style: diamond
-        template: " {{ if .WSL }} on {{ end }}{{ .Icon }} "
+        template: " {{ .Icon }}{{ if .WSL }} on {{ end }} "
         type: os
       # Shell
       - background: p:tone-dark
